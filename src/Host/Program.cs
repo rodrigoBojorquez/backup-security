@@ -9,7 +9,7 @@ builder.Services.AddApplicationCore();
 builder.Services.AddInfraestructure(builder.Configuration);
 
 var app = builder.Build();
-await app.Services.InitializeDatabasesAsync();
+// await app.Services.InitializeDatabasesAsync();
 
 app.UseInfraestructure();
 app.Run();

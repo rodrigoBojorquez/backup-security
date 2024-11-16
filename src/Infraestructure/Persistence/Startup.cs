@@ -23,13 +23,14 @@ namespace Infraestructure.Persistence
 
             services
                 .Configure<DataBaseSetting>(config.GetSection(nameof(DataBaseSetting)))
-                .AddDbContext<ApplicationDbContext>(m => m.UseSqlServer(rootConnectionString))
-                .AddTransient<IDatabaseInitializer, DatabaseInitializer>()
+                .AddDbContext<ApplicationDbContext>(m => m.UseNpgsql(rootConnectionString))
                 .AddTransient<ApplicationDbInitializer>();
 
             //Add services
             services.AddTransient<IDashboardService, DashboardService>();
-
+            services.AddTransient<IStudentService, StudentService>();
+            services.AddScoped<IColaboratorsService, ColaboratorService>();
+            
             //End services
 
             return services;

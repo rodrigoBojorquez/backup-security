@@ -26,7 +26,7 @@ namespace Infraestructure.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+    
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
         }
 
@@ -36,7 +36,7 @@ namespace Infraestructure.Persistence
 
             if (!string.IsNullOrWhiteSpace(TenantInfo?.ConnectionString))
             {
-                optionsBuilder.UseSqlServer(TenantInfo.ConnectionString);
+                optionsBuilder.UseNpgsql(TenantInfo.ConnectionString);
             }
         }
 

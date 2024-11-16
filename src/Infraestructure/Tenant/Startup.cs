@@ -19,7 +19,7 @@ namespace Infraestructure.Tenant
             if (string.IsNullOrEmpty(rootConnectionString)) throw new InvalidOperationException("DB ConnectionString is not configured.");
 
             return services
-                .AddDbContext<TenantContext>(m => m.UseSqlServer(rootConnectionString))
+                .AddDbContext<TenantContext>(m => m.UseNpgsql(rootConnectionString))
                 .AddMultiTenant<TenantInfo>()
                     .WithClaimStrategy("tenant")
                     .WithHeaderStrategy("tenant")

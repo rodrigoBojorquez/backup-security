@@ -29,13 +29,13 @@ namespace Infraestructure
             return services;
         }
 
-        public static async Task InitializeDatabasesAsync(this IServiceProvider services, CancellationToken cancellationToken = default)
-        {
-            using var scope = services.CreateScope();
-
-            await scope.ServiceProvider.GetRequiredService<IDatabaseInitializer>()
-                .InitializeDatabasesAsync(cancellationToken);
-        }
+        // public static async Task InitializeDatabasesAsync(this IServiceProvider services, CancellationToken cancellationToken = default)
+        // {
+        //     using var scope = services.CreateScope();
+        //
+        //     await scope.ServiceProvider.GetRequiredService<IDatabaseInitializer>()
+        //         .InitializeDatabasesAsync(cancellationToken);
+        // }
 
         public static IApplicationBuilder UseInfraestructure(this IApplicationBuilder app)
         {
